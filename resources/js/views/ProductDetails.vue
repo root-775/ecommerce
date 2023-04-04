@@ -15,7 +15,7 @@ const { products } = storeToRefs(productStore);
     <div class="span9">
         <ul class="breadcrumb">
             <li>
-                <a href="index.html">Home</a>
+                <router-link :to="{name : 'home'}">Home</router-link>
                 <span class="divider">/</span>
             </li>
             <li>
