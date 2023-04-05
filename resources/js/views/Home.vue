@@ -5,10 +5,12 @@ import Product from '../components/Product.vue';
 import { useProductStore } from '../stores';
 import { storeToRefs } from "pinia";
 
-const productStore = useProductStore();
-productStore.getAllProducts();
-const { products } = storeToRefs(productStore);
 
+const productStore = useProductStore();
+onMounted(() => {
+    productStore.getAllProducts();
+})
+const { products } = storeToRefs(productStore);
 </script>
 <style scoped>
 .thumbnails .span4 {

@@ -2,16 +2,21 @@
 import { useRoute } from 'vue-router';
 import { useProductStore } from "../stores/product.store";
 import { storeToRefs } from 'pinia';
+import { onMounted, ref } from 'vue';
 
-const productStore = useProductStore();
 const route = useRoute();
-
-productStore.getSingleProduct(route.params.id);
+const productStore = useProductStore();
+onMounted(() => {
+    productStore.getSingleProduct(route.params.id);
+})
 const { products } = storeToRefs(productStore);
 
+console.log(products);
 </script>
 <template>
+    {{ products.title }}
     {{ products }}
+    {{ val }}
     <div class="span9">
         <ul class="breadcrumb">
             <li>
@@ -19,7 +24,7 @@ const { products } = storeToRefs(productStore);
                 <span class="divider">/</span>
             </li>
             <li>
-                <a href="products.html">Items</a>
+                <router-link :to="{name: 'productDetails', params: {'slug': 'asfsaf', 'id': 1}}">{{ products.title }}</router-link>
                 <span class="divider">/</span>
             </li>
             <li class="active">Preview</li>

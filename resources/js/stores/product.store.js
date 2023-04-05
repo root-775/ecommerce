@@ -13,6 +13,8 @@ export const useProductStore = defineStore("product", () => {
         } catch (error) {
             this.products = { error };
         }
+        console.log("getAllProducts");
+
     }
 
     async function getSingleProduct(id) {
@@ -22,6 +24,7 @@ export const useProductStore = defineStore("product", () => {
         } catch (error) {
             this.products = { error };
         }
+        console.log("getSingleProduct");
     }
 
     return { products, getAllProducts, getSingleProduct}

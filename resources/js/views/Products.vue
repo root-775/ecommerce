@@ -2,9 +2,12 @@
 import Product from '../components/Product.vue';
 import { useProductStore } from '../stores';
 import { storeToRefs } from "pinia";
+import { onMounted } from 'vue';
 
 const productStore = useProductStore();
-productStore.getAllProducts();
+onMounted(() => {
+    productStore.getAllProducts();
+})
 const { products } = storeToRefs(productStore);
 </script>
 
